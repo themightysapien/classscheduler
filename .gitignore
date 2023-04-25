@@ -27,3 +27,7 @@ coverage
 *.sln
 *.sw?
 __project
+firebase.json
+.firebaserc
+src/firebase
+.firebase

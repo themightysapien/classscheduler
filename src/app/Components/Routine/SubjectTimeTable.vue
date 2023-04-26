@@ -36,7 +36,7 @@ const sortPeriods = (periods: any[]) => {
 
 <template>
     <div class="bg-white p-3 mt-3">
-        <div class="">
+        <div class="print:hidden">
             <select
                 class="select-xs"
                 @change="onSubjectChangeHandler"
@@ -52,6 +52,7 @@ const sortPeriods = (periods: any[]) => {
                 </option>
             </select>
         </div>
+            <h3 class="printable__only" v-if="activeSubject">Subject: {{ subjectsMapped[activeSubject]['subject'] }}  Teacher: {{ subjectsMapped[activeSubject]['teacher'] }}</h3>
         <div class="mt-2 timetable" v-if="activeSubject">
             <div class="table subject-timetable">
                 <div
@@ -62,7 +63,7 @@ const sortPeriods = (periods: any[]) => {
                         :key="$sIndex"
                         class="timetable-body-row table-row"
                     >
-                        <div class="timetable-row-col table-cell p-2">
+                        <div class="timetable-row-col table-col-day table-cell p-2">
                             Day {{ $sIndex + 1 }}
                         </div>
                         <div

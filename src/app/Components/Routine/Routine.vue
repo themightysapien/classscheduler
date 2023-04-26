@@ -133,7 +133,7 @@ const onDropHandler = (section, $event) => {
 <template>
   <div>
     <template v-for="(section, sIndex) of gradeStore.currentSections" :key="section.uuid">
-      <div class="grid grid-cols-4 gap-6 mt-3">
+      <div class="grid grid-cols-4 gap-6 mt-3 print:grid-cols-1">
         <div class="col-span-3">
           <div class="flex flex-wrap align-items-center justify-center">
             <span class="text-xl text-900 font-bold my-2">Section {{ section.name }}</span>
@@ -180,7 +180,7 @@ const onDropHandler = (section, $event) => {
         </div>
         <div>
           <div
-            class="bg-white pt-4 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg settings"
+            class="print:hidden bg-white pt-4 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg settings"
           >
             <!-- <h3 class="text-xl text-900 font-bold">Settings</h3> -->
             <Settings :section="section" :index="sIndex" />
@@ -188,7 +188,7 @@ const onDropHandler = (section, $event) => {
         </div>
       </div>
     </template>
-    <button class="bg-blue-200 text-gray-800 font-bold" @click.prevent="addSectionHandler">
+    <button class="print:hidden bg-blue-200 text-gray-800 font-bold" @click.prevent="addSectionHandler">
       Add New Section
     </button>
   </div>

@@ -1,3 +1,9 @@
+@page {
+  //   margin: 0.1cm;
+  size: landscape;
+  orientation: landscape;
+}
+
 .timetable-wrapper {
   overflow: scroll;
 }
@@ -120,5 +126,49 @@
     align-items: center;
     justify-content: center;
     padding: 0.5rem !important;
+  }
+}
+
+.printable__only {
+    display: none;
+}
+
+@media print {
+    .printable__only {
+        display: block;
+    }
+  .timetable-wrapper {
+    overflow: hidden;
+  }
+
+  .timetable-col,
+  .timetable-row-col {
+    color: black !important;
+    padding: 0 !important;
+    width: 80px !important;
+    font-size: 12px;
+    * {
+      color: black !important;
+    }
+  }
+  .table-col-day {
+    width: 30px !important;
+  }
+
+  .subject-timetable {
+    .table-cell {
+      width: 90px !important;
+      height:60px;
+      padding: 0 !important;
+      font-size: 12px !important;
+      color: black !important;
+      * {
+           font-size: 12px !important;
+       }
+
+      &.table-col-day {
+        width:30px !important;
+      }
+    }
   }
 }

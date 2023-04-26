@@ -28,7 +28,7 @@ const addGrade = (e) => {
 </script>
 <template>
     <div>
-        <div class="flex justify-center items-center">
+        <div class="flex justify-center items-center print:hidden">
             <button
                 @click.prevent="setCurrentView('section')"
                 title="Add New Period"
@@ -47,7 +47,7 @@ const addGrade = (e) => {
             </button>
         </div>
         <div v-if="currentView == 'section'">
-            <ul class="flex border-b border-gray-100">
+            <ul class="flex border-b border-gray-100 print:hidden">
                 <li
                     class="flex"
                     v-for="(grade, gIndex) of gradeStore.items"

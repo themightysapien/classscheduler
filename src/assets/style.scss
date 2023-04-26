@@ -1,1 +1,124 @@
-/media/dev/xampp/htdocs/works/classscheduler/laravel/resources/css/style.scss
+.timetable-wrapper {
+  overflow: scroll;
+}
+
+.timetable {
+  position: relative;
+  .table {
+    .timetable-header-group {
+      display: flex;
+    }
+    .timetable-header {
+      .timetable-col-header {
+        border: 1px solid red;
+        padding: 0.3rem;
+        text-align: center;
+
+        font-weight: bold;
+        background-color: lightblue;
+      }
+    }
+
+    .timetable-body {
+      position: relative;
+      .timetable-body-row {
+        display: flex;
+        position: relative;
+        .timetable-row-col {
+          text-align: center;
+          padding: 0.1rem 0;
+          // background-color: rgb(224, 241, 224);
+          border: 1px solid red;
+          font-size: 0.8rem;
+          font-weight: bold;
+
+          .font-sm {
+            font-size: 0.7rem;
+          }
+        }
+
+        // &::before {
+        //     content: "Day 1";
+        //     background-color: red;
+        //     color: white;
+        //     left:-10px;
+        //     position: absolute;
+        // }
+      }
+    }
+
+    .table-col-slot {
+      height: 35px;
+      overflow: hidden;
+
+      .timetable-col-content {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .draggable-subject {
+          height: 90%;
+          width: 95%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+      // padding:1rem;
+      // width:120px;
+    }
+    .table-col-day {
+      width: 40px;
+    }
+  }
+}
+
+.subject-scheduler {
+  .scheduler-col-content {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .scheduler-subject {
+      height: 90%;
+      width: 95%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+.settings {
+  .settings-sections {
+    .input-xs {
+      padding: 2px 5px;
+      font-size: 12px;
+      max-width: 120px;
+    }
+    .select-xs {
+      // padding:2px 5px;
+      height: 2rem;
+      padding: 0 2rem 0 5px;
+      font-size: 12px;
+    }
+  }
+}
+
+.bg-break {
+  background-color: rgb(196, 196, 196);
+}
+
+.view-btn-active {
+  background-color: rgb(84, 153, 84);
+  color: white;
+}
+
+.subject-timetable {
+  .table-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem !important;
+  }
+}

@@ -129,14 +129,39 @@ const onDropHandler = (section, $event) => {
     )
   }
 }
+
+const onSectionNameClick = (sectionId) => {
+  const name = prompt('Rename Section')
+  if (name) {
+    routineStore.renameSection(sectionId, name)
+  }
+}
+
+const onSectionRemoveClick = (sectionId) => {
+  if (confirm('Are you sure you want to remove this section?')) {
+    routineStore.removeSection(sectionId)
+  }
+}
 </script>
 <template>
   <div>
     <template v-for="(section, sIndex) of gradeStore.currentSections" :key="section.uuid">
       <div class="grid grid-cols-4 gap-6 mt-3 print:grid-cols-1">
         <div class="col-span-3">
-          <div class="flex flex-wrap align-items-center justify-center">
-            <span class="text-xl text-900 font-bold my-2">Section {{ section.name }}</span>
+          <div class="flex flex-wrap items-center justify-center">
+            <span class="text-xl text-900 font-bold my-2"
+              >Section
+              <a href="#" title="Rename Section" @click.prevent="onSectionNameClick(section.uuid)">{{
+                section.name
+              }}</a></span
+            >
+            <a
+              href="#"
+              title="Remove Section"
+              @click.prevent="onSectionRemoveClick(section.uuid)"
+              class="ml-3 text-red-400 font-bold"
+              >Delete</a
+            >
           </div>
           <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
             <div class="text-gray-900 dark:text-gray-100 relative timetable-wrapper">
@@ -188,7 +213,10 @@ const onDropHandler = (section, $event) => {
         </div>
       </div>
     </template>
-    <button class="print:hidden bg-blue-200 text-gray-800 font-bold" @click.prevent="addSectionHandler">
+    <button
+      class="print:hidden mt-3 p-3 bg-blue-300 text-gray-800 font-bold"
+      @click.prevent="addSectionHandler"
+    >
       Add New Section
     </button>
   </div>

@@ -36,7 +36,7 @@ export const useSubjectStore = defineStore("subject", {
                 alert("Subject already exists");
                 return;
             }
-            const item = { ...subject, uuid: uuidv4(), color: '#' + randomColor(), zoom: 1 };
+            const item = { ...subject, uuid: uuidv4(), color: randomColor(), zoom: 1 };
             this.items.push(item as Subject);
             return item;
         },

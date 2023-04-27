@@ -6,7 +6,7 @@
             :class="{ 'bg-red-200': !remainingPeriods[subject.uuid] }"
             v-for="(subject, pIndex) of subjects"
             :draggable="remainingPeriods[subject.uuid] > 0"
-            :key="sectionIndex + '_' + pIndex"
+            :key="sectionIndex + '_' + pIndex + '_' + subject.uuid"
             :draggableData="{ subject: subject.uuid, section: section.uuid }"
         >
             <SubjectBlock :subject="subject" class="flex">

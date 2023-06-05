@@ -291,9 +291,18 @@ export const useRoutineStore = defineStore('routine', {
         alert('Section already exists')
         return
       }
-      const item = { ...section, uuid: uuidv4() }
-      this.sections.push(item)
-      return item
+      const $section = { ...section, uuid: uuidv4() }
+      if (this.sections[0]) {
+        this.sections[0].periods.forEach((item) => {
+          $section.periods.push({ ...item })
+        });
+
+        this.sections[0].subjects.forEach(item => {
+          $section.subjects.push(item);
+        });
+      }
+      this.sections.push($section)
+      return $section;
     },
     removeSection(sectionId: string) {
       const index = this.sections.findIndex((item) => item.uuid == sectionId)
@@ -387,18 +396,16 @@ export const useRoutineStore = defineStore('routine', {
       const key = row.toString() + col.toString()
       delete section.schedules[key]
     },
-    shuffle(sectionId: string, sectionIndex: number){
-      const section = this.mappedSections[sectionId];
-      const {init, process} = useShuffle(section, );
-      console.log(this.sectionSubjectSchedules);
-      init();
+    shuffle(sectionId: string, sectionIndex: number) {
+      const section = this.mappedSections[sectionId]
+      const { init, process } = useShuffle(section)
+      // console.log(this.sectionSubjectSchedules);
+      init()
       // ready();
-      section.subjects.forEach(subject => {
+      section.subjects.forEach((subject) => {
         // console.log(subject.uuid, this.sectionSubjectSchedules[subject.uuid]);
-        process(this.sectionSubjectSchedules, subject.uuid);
+        process(this.sectionSubjectSchedules, subject.uuid)
       })
-      
-
     }
   }
 })

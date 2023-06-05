@@ -8,10 +8,13 @@ This is class scheduler made with Vue 3 in Vite.
 
 ## Features
 
-1. Dynamic Period time per grade per section.
-2. Drag and Drop subjects to period slots for sections
-3. Show subject summary overlay when dragging
-4. Import/Export Coming Soon..
+- Auto Fill all grade and section
+- Auto fill individual section
+- Dynamic Period time per grade per section.
+- Drag and Drop subjects to period slots for sections
+- Prevent from droppin got invalid slot
+- See current filled slots while dragging
+- Import/Export Coming Soon..
 
 ## Demo
 

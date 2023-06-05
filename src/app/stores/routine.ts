@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { ObjectUtils } from '@/app/utils'
 import { nTimesItemTemplate } from '@/app/utils/helpers'
 import store from '@/app/stores'
+import useShuffle from '../hooks/useShuffle'
 
 // You can name the return value of `defineStore()` anything you want,
 // but it's best to use the name of the store and surround it with `use`
@@ -371,7 +372,7 @@ export const useRoutineStore = defineStore('routine', {
       const fromKey = fromRow.toString() + fromCol.toString()
       const toKey = toRow.toString() + toCol.toString()
 
-      let toVal = section.schedules[toKey]
+      const toVal = section.schedules[toKey]
       section.schedules[toKey] = section.schedules[fromKey]
       section.schedules[fromKey] = toVal
       // console.log(section.schedules);
@@ -385,6 +386,19 @@ export const useRoutineStore = defineStore('routine', {
       const section = this.mappedSections[sectionId]
       const key = row.toString() + col.toString()
       delete section.schedules[key]
+    },
+    shuffle(sectionId: string, sectionIndex: number){
+      const section = this.mappedSections[sectionId];
+      const {init, process} = useShuffle(section, );
+      console.log(this.sectionSubjectSchedules);
+      init();
+      // ready();
+      section.subjects.forEach(subject => {
+        // console.log(subject.uuid, this.sectionSubjectSchedules[subject.uuid]);
+        process(this.sectionSubjectSchedules, subject.uuid);
+      })
+      
+
     }
   }
 })

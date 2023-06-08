@@ -1,6 +1,6 @@
-# Class Scheduler
+# Class/Period Scheduler
 
-This is class scheduler made with Vue 3 in Vite.
+Drag and drop to assign teachers to dynamically generated time slots or auto fill (NP-HARD problem) to pre populate and start from there.
 
 ## Recommended IDE Setup
 

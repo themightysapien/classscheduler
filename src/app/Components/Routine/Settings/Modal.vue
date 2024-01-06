@@ -35,7 +35,7 @@
         <div
           class="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:p-6 xl:w-6/12 xl:max-w-6/12"
         >
-          <div>
+          <div v-if="section">
             <h3
               class="text-xl font-semibold leading-6 text-gray-900 mb-4 flex"
               id="modal-title"
@@ -43,7 +43,7 @@
               <span class="font-bold"> Settings </span>
               <span class="text-blue-600 font-bold ml-auto">{{ grade?.name }} </span>
                 <span class="ml-2">::</span>
-              <span class="ml-2"> Section {{ section.name }} </span>
+              <span class="ml-2"> Section {{ section['name'] }} </span>
             </h3>
             <Subjects :section="section" :sectionIndex="sectionIndex" />
             <hr class="my-4" />

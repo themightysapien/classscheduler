@@ -2,21 +2,21 @@
   <div class="settings-sections" v-if="section">
     <table>
       <tr>
-        <th class="text-left">Subject-Teacher</th>
-        <th>Periods</th>
+        <th class="text-left font-bold">Subject-Teacher</th>
+        <th class="font-bold">Periods per week</th>
         <th></th>
       </tr>
       <tr v-for="(subject, pIndex) of subjects" :key="sectionIndex + '_' + pIndex" class="">
         <td class="font-bold" :style="{ color: subject.color ?? 'gray' }">
           <div class="flex items-center">
-            <span v-html="subject.subject"></span>
+            <span class="font-bold" v-html="subject.subject"></span>
             <span>-</span>
             <!-- <input type="text" class="input-xs w-[100px]" :value="subject.teacher" /> -->
             <span v-html="subject.teacher"></span>
             <!-- <input type="text" class="input-xs" :value="subject.subject" /> -->
           </div>
         </td>
-        <td class="">
+        <td class="" align="right">
           <input
             type="number"
             class="input-xs w-[50px]"
@@ -33,16 +33,16 @@
           <a
             href="#"
             title="Remove Subject"
-            class="ml-2 w-7 h-7 inline-flex justify-center items-center bg-red-300 text-white bold rounded-full"
+            class="ml-2 w-7 h-7 font-weight-bold inline-flex justify-center items-center bg-red-500 hover:bg-red-300 text-white bold rounded-full"
             @click.prevent="(e) => routineStore.removeSubject(section.uuid, subject?.uuid)"
-            >-</a
+            >X</a
           >
         </td>
       </tr>
       <tr>
         <td colspan="3">
           <select class="select-xs" @change="onAvailableSubjectChangeHandler">
-            <option value="">Select Subject</option>
+            <option value="">Add available subject</option>
             <option
               v-for="(subject, sIndex) of availableSubjects"
               :key="'available_' + sIndex"
@@ -56,7 +56,7 @@
         </td>
       </tr>
       <tr>
-        <td class="flex items-center">
+        <td>
           <input
             type="text"
             class="input-xs w-[120px]"
@@ -71,7 +71,7 @@
             placeholder="Teacher"
           />
         </td>
-        <td class="">
+        <td class="" align="right">
           <input
             type="number"
             class="input-xs"

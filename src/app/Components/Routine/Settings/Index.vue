@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Subjects from './Subjects.vue';
 import Periods from './Periods.vue';
+import Modal from './Modal.vue';
 import SubjectsUI from '@/app/Components/Routine/UI/Subjects.vue';
 import { ref, defineProps } from 'vue';
 import useTabs from '@/app/hooks/useTabs';
@@ -10,6 +11,8 @@ const props = defineProps({
     section: { default: null },
     sectionIndex: { default: 0 }
 });
+
+const settingModalVisible = ref(false);
 
 const { tabChange, isOpen } = useTabs('app');
 
@@ -33,9 +36,10 @@ const { tabChange, isOpen } = useTabs('app');
                         <span class="text-sm font-medium text-gray-900"> Application </span>
                     </div>
                 </a>
+                
             </li>
             <li class="flex-1">
-                <a class="relative block  px-4 pb-2" href="" @click.prevent="tabChange('settings')">
+                <a class="relative block  px-4 pb-2" href="" @click.prevent="settingModalVisible=true;">
                     <span v-if="isOpen('settings')" class="absolute inset-x-0 -bottom-px h-px w-full bg-pink-600"></span>
 
                     <div class="flex items-center justify-center gap-4">
@@ -52,14 +56,16 @@ const { tabChange, isOpen } = useTabs('app');
         </ul>
         <div class="section__container">
             <div class="pt-5" :class="{ 'hidden': !isOpen('settings') }">
-                <Subjects :section="section" :sectionIndex="sectionIndex" />
+                <!-- <Subjects :section="section" :sectionIndex="sectionIndex" />
                 <hr class="mt-3"/>
-                <Periods class="mt-4" :section="section" :sectionIndex="sectionIndex" />
+                <Periods class="mt-4" :section="section" :sectionIndex="sectionIndex" /> -->
             </div>
             <div class="pt-5" :class="{ 'hidden': !isOpen('app') }">
                 <SubjectsUI :section="section" :sectionIndex="sectionIndex" />
             </div>
         </div>
+
+        <Modal v-model:visible="settingModalVisible" :sectionIndex="sectionIndex" :section="section"/>
     </div>
 </template>
 <style>
